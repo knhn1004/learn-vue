@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class</title>
+    <script src="https://unpkg.com/vue@2"></script>
+  </head>
+  <style>
+    .red {
+      background-color: red;
+    }
+    .blue {
+      background-color: blue;
+    }
+    .basic {
+      color: white;
+      font-weight: bold;
+    }
+
+    .arr1 {
+      color: black;
+    }
+    .arr2 {
+      text-decoration: underline;
+    }
+    .arr3 {
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <div class="basic" :class="myClass">{{ text }}</div>
+      <button @click="changeClass">Change Da Class</button>
+      <div>
+        <div :class="arr">my array</div>
+      </div>
+    </div>
+
+    <script>
+      Vue.config.productionTip = false;
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          text: 'hello world',
+          myClass: 'red',
+          arr: ['arr1', 'arr2', 'arr3'],
+        },
+        methods: {
+          changeClass() {
+            this.myClass = this.myClass === 'red' ? 'blue' : 'red';
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

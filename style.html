@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Class</title>
+    <script src="https://unpkg.com/vue@2"></script>
+  </head>
+  <style>
+    div {
+      margin-bottom: 30px;
+    }
+    .basic {
+      color: white;
+      font-weight: bold;
+    }
+  </style>
+  <body>
+    <div id="app">
+      <!--
+      <div class="basic" :class="myClass" :style="{fontSize: fSize + 'px'}">
+      -->
+      <!-- style object -->
+      <div class="basic" :class="myClass" :style="styleObj">{{ text }}</div>
+      <!-- array of styles -->
+      <div class="basic" :class="myClass" :style="[styleObj, styleObj2]">
+        {{ text }}
+      </div>
+    </div>
+
+    <script>
+      Vue.config.productionTip = false;
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          text: 'hello world',
+          myClass: 'red',
+          fSize: 40,
+          styleObj: {
+            fontSize: '40px',
+            backgroundColor: 'orange',
+          },
+          styleObj2: {
+            textDecoration: 'underline',
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

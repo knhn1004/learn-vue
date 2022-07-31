@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Watch</title>
+    <script src="https://unpkg.com/vue@2"></script>
+    <style>
+      * {
+        margin-bottom: 20px;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <h2>Today's Weather: {{ text }}</h2>
+      <button @click="changeWeather">Change Weather</button>
+    </div>
+
+    <script>
+      Vue.config.productionTip = false;
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          hot: true,
+        },
+        computed: {
+          text() {
+            return this.hot ? 'hot' : 'cold';
+          },
+        },
+        methods: {
+          changeWeather() {
+            this.hot = !this.hot;
+          },
+        },
+        watch: {
+          //hot: {
+          //  handler(newVal, oldVal) {
+          //    console.log('hot changed');
+          //    console.log('new: ', newVal);
+          //    console.log('old: ', oldVal);
+          //  },
+          //},
+          hot() {
+            // shorthand
+            console.log('hot changed');
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
