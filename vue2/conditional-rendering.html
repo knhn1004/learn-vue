@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Computed</title>
+    <script src="https://unpkg.com/vue@2"></script>
+    <style>
+      * {
+        margin-bottom: 20px;
+        padding: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div>
+        <!-- v-if: for the first time -->
+        <!-- below is better with v-show -->
+        <button @click="changeIndex">Change Index</button>
+        <div v-if="index===1">Item 1</div>
+        <div v-else-if="index===2">Item 2</div>
+        <div v-else-if="index===3">Item 3</div>
+        <div v-else>No more item</div>
+      </div>
+
+      <!-- v-show: for hiding/showing elements -->
+      <button @click="toggleWelcome">toggle welcome text</button>
+      <h1 v-show="showWelcome">Hello {{ name }}</h1>
+
+      <!-- template: only for v-if, not for v-show -->
+      <template v-if="index===1">
+        <div>
+          <h2>Item 1</h2>
+          <p>This is item 1</p>
+        </div>
+      </template>
+    </div>
+
+    <script>
+      Vue.config.productionTip = false;
+      const vm = new Vue({
+        el: '#app',
+        data: {
+          name: 'World',
+          showWelcome: false,
+          index: 1,
+        },
+        methods: {
+          toggleWelcome() {
+            this.showWelcome = !this.showWelcome;
+          },
+          changeIndex(index) {
+            //if (this.index == 3) this.index = 1;
+            //else this.index++;
+            this.index++;
+          },
+        },
+      });
+    </script>
+  </body>
+</html>
